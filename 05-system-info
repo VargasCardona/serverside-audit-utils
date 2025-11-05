@@ -1,0 +1,25 @@
+#!/bin/bash
+echo "Welcome to the (Server's Name) Server"
+echo "=========================================="
+echo "Hostname:        $(hostname)"
+echo "Date & Time:     $(date)"
+echo "Uptime:          $(uptime -p)"
+echo "Load Average:    $(cat /proc/loadavg)"
+echo "Disk Usage:      $(df -h / | awk 'NR==2 {print $3 " / " $2 " (" $5 " used)"}')"
+echo "Memory Usage:    $(free -h | awk 'NR==2 {print $3 " / " $2 " used"}')"
+echo "CPU Usage:       $(grep 'cpu ' /proc/stat | awk '{usage=($2+$4)*100/($2+$4+$5)} END {print usage "%"}')"
+echo "External IP:     $(curl -s ifconfig.me)"
+echo "Firewall Status: $(sudo ufw status | grep "Status")"
+
+echo ""
+echo "Active Users:    $(who | wc -l) logged in"
+echo "SSH Sessions:    $(who | awk '{print $1, $5}')"
+
+echo ""
+echo "Services:"
+echo "   - Fail2Ban:      $(systemctl is-active fail2ban)"
+echo "   - UFW:           $(sudo systemctl is-active ufw)"
+echo "   - SSH:           $(systemctl is-active ssh)"
+
+echo "=========================================="
+echo ""
