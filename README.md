@@ -27,7 +27,7 @@ A collection of **server-side Bash scripts** for auditing and monitoring Linux s
 ## Installation
 
 ```bash
-git clone https://github.com/vargascardona/server-audit-scripts.git
+git clone https://github.com/VargasCardona/serverside-audit-utils
 cd server-audit-scripts
 ```
 
